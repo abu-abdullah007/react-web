@@ -13,6 +13,7 @@ a{
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .nav{
@@ -21,6 +22,62 @@ a{
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #204722;
+    position: relative;
+    min-height: 70px;
+    max-height: 70px;
+}
+
+.hiddenNav{
+    position: absolute;
+    top: 80px;
+    right: 140px;
+    height: 300px;
+    width: 200px;
+    background-color: rgb(117, 113, 113);
+    z-index: 1;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.hiddenNav ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hiddenNav ul li{
+    margin: 25px 0;
+    list-style-type: none;
+    text-transform: uppercase;
+}
+
+.hiddenNav ul li:first-child{
+    display: none;
+}
+
+.hiddenNav:hover ul li:first-child{
+    display: block;
+    cursor: pointer;
+}
+
+.hiddenNav:hover ul li{
+    margin: 17px 0;
+}
+
+.hiddenNav ul li a{
+    color: white;
+    font-family: "Roboto Mono", monospace;
+}
+
+.hiddenNav ul li a:hover{
+    color: #f79191;
+}
+
+#endButton{
+    cursor: pointer;
 }
 
 .nav ul{
@@ -30,12 +87,12 @@ a{
     flex: 0.7;
 }
 
-.nav ul li{
+.nav > ul li{
     list-style-type: none;
     margin: 20px 40px;
 }
 
-.nav ul li a{
+.nav > ul li a{
     color: #ffffff;
     text-transform: uppercase;
     font-family: "Roboto Mono", monospace;
@@ -43,7 +100,7 @@ a{
     font-size: 1.2rem;
 }
 
-.nav ul li a:hover{
+.nav > ul li a:hover{
     color: #f79191;
 }
 
@@ -71,6 +128,24 @@ a{
     margin-left: 20px;
 }
 
+.button{
+    height: 40px;
+    width: 40px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
+.box{
+    height: 5px;
+    width: 30px;
+    background-color: rgb(143, 143, 140);
+    border-radius: 20px;
+}
+
 .fullBody{
     min-height: calc(100vh - 70px);
     width: 100%;
@@ -80,13 +155,210 @@ a{
     #ffffff 0%,
     #ffffff 50%);
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+}
+
+.mainBody{
+    flex: 0.95;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.box{
-    height: 400px;
-    flex: 0.3;
-    background-color: red;
-    border-radius: 20px;
+.card{
+    height: 500px;
+    width: 800px;
+    max-width: 900px;
+    max-height: 600px;
+    border: 2px solid #4c4c4dcc;
+    background-color: #eeeded;
+    display: flex;
+    border-radius: 5px;
+    margin-top: 100px;
+    transition: transform 1.4s;
+    opacity: 1;
+}
+
+.under{
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.left{
+    flex: 0.6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.leftCenter{
+    height: 50%;
+    width: 70%;
+    font-family: sans-serif;
+    margin-top: 30px;
+}
+
+.leftCenter *{
+    margin: 20px 0;
+    opacity: 0.8;
+}
+
+.leftCenter h1{
+    font-size: 2em;
+}
+
+.leftCenter p{
+    font-size: 1.2rem;
+}
+
+.gitLink{
+    height: 10%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.gitLink *{
+    margin: 0 20px;
+    font-size: 1.8rem;
+    padding: 15px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.gitLink *:hover{
+    background-color: grey;
+    cursor: pointer;
+}
+
+.right{
+    flex: 0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.right img{
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    position: absolute;
+    top: 25px;
+}
+
+.footer{
+    flex: 0.05;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.footer *{
+    font-size: 1.3rem;
+    margin: 0 30px;
+    color: #161414;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.footer *:hover{
+    color: #074607;
+    transition: 0.1s;
+}
+
+
+.show{
+    transform: translateY(-400px);
+}
+
+
+@media screen and (max-width:910px) {
+    .card{
+        max-width: 750px;
+    }
+
+    .left{
+        flex: 0.5;
+    }
+
+    .right{
+        flex: 0.5;
+    }
+
+    .leftCenter h1{
+        font-size: 1.5rem;
+    }
+
+    .gitLink *{
+        margin: 0 15px;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .card{
+        max-width: 600px;
+        max-height: 500px;
+    }
+
+    .left{
+        flex: 0.3;
+    }
+
+    .right{
+        flex: 0.7;
+    }
+
+    .leftCenter h1{
+        font-size: 1.2rem;
+    }
+
+    .leftCenter p{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .nav > ul {
+        display: none;
+    }
+
+    .button{
+        display: flex;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card{
+        border: none;
+        width: 100vw;
+        position: relative;
+    }
+
+    .right{
+        display: none;
+    }
+
+    .left{
+        background:linear-gradient(#ffffffaf,#ffffffb0),url(../Media/my.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:contain;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    .gitLink{
+        background-color: rgba(165, 162, 162, 0.664);
+        justify-content: center;
+    }
+
+    .leftCenter{
+        text-align: center;
+    }
 }
